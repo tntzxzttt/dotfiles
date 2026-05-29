@@ -1,0 +1,22 @@
+# Ignore everything by default
+*
+
+# Track this file and README
+!.gitignore
+!README.md
+
+# Whitelist managed config directories and their contents
+!.config/
+!.config/fish/
+!.config/fish/**
+!.config/nvim/
+!.config/nvim/**
+!.config/git/
+!.config/git/**
+!.config/ghostty/
+!.config/ghostty/**
+!.config/tmux/
+!.config/tmux/**
+!.config/starship.toml
+!.tmux
+!.tmux/**
