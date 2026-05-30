@@ -19,6 +19,10 @@ eval "$(anyenv init - fish)"
 set -gx GOPATH $HOME/.go
 fish_add_path --path $GOPATH/bin
 
+# pnpm
+set -gx PNPM_HOME $HOME/Library/pnpm
+fish_add_path --path $PNPM_HOME
+
 # WARNINGS: This direnv setup must be placed at the end of this file.
 # Refer to https://direnv.net/docs/hook.html#fish.
 direnv hook fish | source
