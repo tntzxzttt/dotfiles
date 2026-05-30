@@ -15,6 +15,9 @@ starship init fish | source
 fish_add_path --path $HOME/.anyenv/bin
 eval "$(anyenv init - fish)"
 
+# Go
+set -gx GOPATH $HOME/.go
+fish_add_path --path $GOPATH/bin
 
 # WARNINGS: This direnv setup must be placed at the end of this file.
 # Refer to https://direnv.net/docs/hook.html#fish.
