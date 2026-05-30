@@ -47,3 +47,24 @@
 # # which is explained in the docs for that config option.
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
+
+# ------------------------------------------------------------------------------
+# Custom settings
+# ------------------------------------------------------------------------------
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# Font
+font-size = 13
+
+# Window
+background-opacity = 0.85
+macos-window-buttons = hidden
+macos-titlebar-style = hidden
+window-show-tab-bar = never
+window-padding-x = 10
+window-padding-y = 15
+window-height = 80
