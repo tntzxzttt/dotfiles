@@ -12,6 +12,34 @@ fish_add_path --path /Applications/Ghostty.app/Contents/MacOS
 # Enable Starship
 starship init fish | source
 
+# Aliases
+alias d='docker'
+alias dc='docker compose'
+alias g='git'
+alias grep='grep --color=auto'
+alias k='kubectl'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+alias m='minikube'
+alias myip='curl inet-ip.info'
+alias n='npm'
+alias nd='node'
+alias ne='nodenv'
+alias nv='nvim'
+alias p='pnpm'
+alias pe='pyenv'
+alias po='poetry'
+alias py='python'
+alias ta='tmux attach -t'
+alias tl='tmux ls'
+alias tn='tmux new -s'
+alias tk='tmux kill-session -t'
+alias v='vim'
+alias view='nvim -R'
+alias y='yarn'
+
 # anyenv
 fish_add_path --path $HOME/.anyenv/bin
 eval "$(anyenv init - fish)"
