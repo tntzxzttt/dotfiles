@@ -107,3 +107,14 @@ git submodule update --remote .tmux
 
 Review the [changelog](https://github.com/gpakosz/.tmux/commits/master) before
 updating — new versions may introduce breaking changes to `.tmux.conf.local`.
+
+## Alternatives to Oh My Fish
+
+Although Oh My Fish supports both package management and prompt customization,
+it has not been actively maintained as of May 2026.
+(The master branch was last updated 11 years ago...)
+
+Instead, we use:
+
+- [fisher](https://github.com/jorgebucaran/fisher) for package management
+- [Starship](https://starship.rs) for prompt customization
