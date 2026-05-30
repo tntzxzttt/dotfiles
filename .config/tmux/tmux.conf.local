@@ -401,6 +401,15 @@ set -g mode-keys vi
 # set -g prefix C-a
 # bind C-a send-prefix
 
+# Alt+hjkl to switch panes without prefix
+bind -n M-h select-pane -L
+bind -n M-j select-pane -D
+bind -n M-k select-pane -U
+bind -n M-l select-pane -R
+
+# Alt+v to enter copy mode
+bind -n M-v copy-mode
+
 # if you don't want Oh my tmux! to alter a binding or a setting, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
 
