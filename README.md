@@ -12,6 +12,22 @@ find them at their expected paths.
 - **git** – to clone the repository (with submodule support)
 - **GNU Stow** – to create the symlinks (`brew install stow`)
 
+## Development
+
+### Commit Message Format
+
+This repository uses [Lefthook](https://lefthook.dev/)
+to run pre-commit hooks that check commit messages for compliance with
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+So you need to install Lefthook and set up the hooks before committing:
+
+```sh
+brew install lefthook
+cd path/to/this/repo # ~/dotfiles in most cases
+lefthook install
+```
+
 ## Set up
 
 ### Install
