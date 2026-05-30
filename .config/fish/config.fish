@@ -3,6 +3,7 @@ if status is-interactive
 end
 
 # PATH
+fish_add_path --path $HOME/.local/bin
 fish_add_path --path /opt/homebrew/bin
 fish_add_path --path /opt/homebrew/opt/mysql-client/bin
 fish_add_path --path /opt/homebrew/opt/asdf/libexec/bin
