@@ -421,6 +421,9 @@ bind -n M-l select-pane -R
 # Alt+v to enter copy mode
 bind -n M-v copy-mode
 
+# Ctrl+x to kill all other panes (with confirmation)
+bind -n C-x confirm-before -p "Kill all other panes? (y/n)" "kill-pane -a"
+
 # if you don't want Oh my tmux! to alter a binding or a setting, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
 
