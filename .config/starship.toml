@@ -1,7 +1,9 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](color_orange)\
+[](color_red)\
+$kubernetes\
+[](bg:color_orange fg:color_red)\
 $os\
 $username\
 [](bg:color_yellow fg:color_orange)\
@@ -45,7 +47,7 @@ color_yellow = '#d79921'
 
 [os]
 disabled = false
-style = "bg:color_orange fg:color_fg0"
+format = '[[ $symbol](bg:color_orange fg:color_fg0)]($style)'
 
 [os.symbols]
 Windows = "󰍲"
@@ -179,3 +181,10 @@ vimcmd_symbol = '[](bold fg:color_green)'
 vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
 vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+
+[kubernetes]
+disabled = false
+symbol = '☸'
+style = "bg:color_red fg:color_fg0"
+# format = '[$symbol$context(\($namespace\))]($style)'
+format = '[$symbol $context ]($style)'
