@@ -19,6 +19,10 @@ eval "$(anyenv init - fish)"
 set -gx GOPATH $HOME/.go
 fish_add_path --path $GOPATH/bin
 
+# pnpm
+set -gx PNPM_HOME $HOME/Library/pnpm
+fish_add_path --path $PNPM_HOME
+
 # Android SDK
 set -gx ANDROID_HOME $HOME/Library/Android/sdk
 fish_add_path --path $ANDROID_HOME/platform-tools
