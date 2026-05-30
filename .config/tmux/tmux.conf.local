@@ -406,6 +406,12 @@ set -g prefix C-y
 bind -n C-b send-keys C-b
 set -sg escape-time 0
 
+# Enable extended keys (CSI u) so tmux can distinguish Ctrl+Backspace from Backspace.
+# Oh-my-tmux only enables this for iTerm/mintty/xterm; Ghostty also supports it.
+set -g extended-keys on
+# Ctrl+Backspace on macOS Delete key -> delete previous word
+bind-key -n C-BSpace send-keys C-w
+
 # Alt+hjkl to switch panes without prefix
 bind -n M-h select-pane -L
 bind -n M-j select-pane -D
