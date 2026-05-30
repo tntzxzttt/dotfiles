@@ -68,3 +68,6 @@ window-show-tab-bar = never
 window-padding-x = 10
 window-padding-y = 15
 window-height = 80
+
+# Send Meta-style keys for tmux
+macos-option-as-alt = left
