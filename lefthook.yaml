@@ -1,0 +1,5 @@
+commit-msg:
+  commands:
+    conventional-commit:
+      run: ./.githooks/commit-msg-check.sh {1}
+      interactive: true

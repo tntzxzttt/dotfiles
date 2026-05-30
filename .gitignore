@@ -20,3 +20,10 @@
 !.config/starship.toml
 !.tmux
 !.tmux/**
+
+!.githooks
+!.githooks/**
+!.editorconfig
+!scripts
+!scripts/**
+!lefthook.yaml
