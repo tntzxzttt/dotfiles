@@ -19,6 +19,10 @@ eval "$(anyenv init - fish)"
 set -gx GOPATH $HOME/.go
 fish_add_path --path $GOPATH/bin
 
+# Android SDK
+set -gx ANDROID_HOME $HOME/Library/Android/sdk
+fish_add_path --path $ANDROID_HOME/platform-tools
+
 # WARNINGS: This direnv setup must be placed at the end of this file.
 # Refer to https://direnv.net/docs/hook.html#fish.
 direnv hook fish | source
