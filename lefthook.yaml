@@ -1,5 +1,19 @@
+# GitHub Free does not offer branch protection rulesets,
+# so we enforce main branch protection via local git hooks instead.
+# This is not enforced server-side; it can be bypassed with --no-verify.
+
+pre-commit:
+  commands:
+    prevent-main-commit:
+      run: .githooks/protect-main-branch.sh commit
+
 commit-msg:
   commands:
     conventional-commit:
       run: ./.githooks/commit-msg-check.sh {1}
       interactive: true
+
+pre-push:
+  commands:
+    prevent-main-push:
+      run: .githooks/protect-main-branch.sh push
