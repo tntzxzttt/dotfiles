@@ -118,3 +118,14 @@ Instead, we use:
 
 - [fisher](https://github.com/jorgebucaran/fisher) for package management
 - [Starship](https://starship.rs) for prompt customization
+
+## Customization
+
+### Go
+
+In `./.config/fish/config.fish`:
+
+- `GOPATH` is set to `~/.go`
+- `$GOPATH/bin` is added to `PATH`
+
+This keeps the home directory visually cleaner by avoiding a visible `~/go` directory.
