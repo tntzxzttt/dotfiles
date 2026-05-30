@@ -10,3 +10,7 @@ fish_add_path --path /Applications/Ghostty.app/Contents/MacOS
 
 # Enable Starship
 starship init fish | source
+
+# WARNINGS: This direnv setup must be placed at the end of this file.
+# Refer to https://direnv.net/docs/hook.html#fish.
+direnv hook fish | source
