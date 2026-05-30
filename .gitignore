@@ -5,7 +5,8 @@
 !.gitignore
 !README.md
 
-# Whitelist managed config directories and their contents
+# WHITELIST
+# Manage config directories and their contents below.
 !.config/
 !.config/fish/
 !.config/fish/**
@@ -30,3 +31,8 @@
 !scripts/**
 !lefthook.yaml
 !CLAUDE.md
+
+# EXCEPTIONS
+# Ignore the following files and directories,
+# even if they are located within the directories listed in the whitelist above.
+.config/tmux/plugins/
