@@ -21,6 +21,8 @@
 !.tmux
 !.tmux/**
 
+!.github
+!.github/**
 !.githooks
 !.githooks/**
 !.editorconfig
