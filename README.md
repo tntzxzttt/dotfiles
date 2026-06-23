@@ -121,6 +121,11 @@ Instead, we use:
 
 ## Customization
 
+### fish
+
+See [`.config/fish/README.md`](.config/fish/README.md) for details on
+`conf.d/` conventions and runtime dependencies (e.g. Bash 5.x for SDKMAN!).
+
 ### Go
 
 In `./.config/fish/config.fish`:
