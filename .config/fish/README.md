@@ -2,13 +2,13 @@
 
 ## conf.d/ naming convention
 
-| Range | Purpose |
-| --- | --- |
-| `00-09` | Foundation: PATH, locale, `XDG_*`, `EDITOR`, and other exported variables |
-| `10-49` | Tool setup and initialization (one file per tool) |
-| `50-79` | Interactive use: abbreviations, key bindings, completions |
-| `90-99` | Overrides and final adjustments |
-| `*.local.fish` | Machine-specific (gitignored; use a number matching the purpose) |
+| Range          | Purpose                                                                   |
+| -------------- | ------------------------------------------------------------------------- |
+| `00-09`        | Foundation: PATH, locale, `XDG_*`, `EDITOR`, and other exported variables |
+| `10-49`        | Tool setup and initialization (one file per tool)                         |
+| `50-79`        | Interactive use: abbreviations, key bindings, completions                 |
+| `90-99`        | Overrides and final adjustments                                           |
+| `*.local.fish` | Machine-specific (gitignored; use a number matching the purpose)          |
 
 Installer-managed files (e.g. `sdk.fish` from fisher) are exceptions to this numbering rule.
 
