@@ -37,3 +37,4 @@
 # even if they are located within the directories listed in the whitelist above.
 .config/tmux/plugins/
 .config/fish/functions/__sdkman-noexport-init.sh
+.config/fish/conf.d/*.local.fish
