@@ -38,3 +38,4 @@
 .config/tmux/plugins/
 .config/fish/functions/__sdkman-noexport-init.sh
 .config/fish/conf.d/*.local.fish
+.config/fish/functions/*.local.fish
