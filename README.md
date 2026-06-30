@@ -126,6 +126,24 @@ Instead, we use:
 See [`.config/fish/README.md`](.config/fish/README.md) for details on
 `conf.d/` conventions and runtime dependencies (e.g. Bash 5.x for SDKMAN!).
 
+#### Machine-local functions
+
+| Directory | Tracked | Purpose |
+|---|---|---|
+| `functions/` | Yes | Version-controlled functions shared across machines |
+| `functions.local/` | No (git-ignored) | Machine-specific functions that stay local |
+
+`functions.local/` is registered on `$fish_function_path` by
+`conf.d/01-autoload-local-functions.fish` and is prepended so that a local
+function can override a tracked one of the same name.
+
+> **Note on `funcsave`:** `funcsave` (and `funced --save`) always writes to
+> `~/.config/fish/functions/`, the tracked directory. It does not honor the
+> priority order of `$fish_function_path`, so a function saved this way is
+> created as a new tracked file and will appear in `git status`. For a
+> machine-local function, do not rely on `funcsave`; create or move the file
+> under `functions.local/` by hand.
+
 ### Go
 
 In `./.config/fish/config.fish`:
