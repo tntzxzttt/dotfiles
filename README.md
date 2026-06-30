@@ -134,7 +134,7 @@ See [`.config/fish/README.md`](.config/fish/README.md) for details on
 | `functions.local/` | No (git-ignored) | Machine-specific functions that stay local |
 
 `functions.local/` is registered on `$fish_function_path` by
-`conf.d/01-autoload-local-functions.fish` and is prepended so that a local
+`conf.d/00-autoload-local-functions.fish` and is prepended so that a local
 function can override a tracked one of the same name.
 
 > **Note on `funcsave`:** `funcsave` (and `funced --save`) always writes to
