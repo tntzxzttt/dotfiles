@@ -1,4 +1,4 @@
-function fetch-default-gitignore
+function fetch-default-gitignore -d "Fetch a .gitignore template from github/gitignore"
     # Get the first argument
     set language $argv[1]
 
