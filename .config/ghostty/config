@@ -58,6 +58,7 @@ cursor-style-blink = false
 shell-integration-features = no-cursor
 
 # Font
+font-family = JetBrainsMono Nerd Font
 font-size = 13
 
 # Window
