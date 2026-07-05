@@ -10,7 +10,17 @@ find them at their expected paths.
 
 - **macOS**
 - **git** – to clone the repository (with submodule support)
-- **GNU Stow** – to create the symlinks (`brew install stow`)
+- **GNU Stow** – to create the symlinks
+
+  ```sh
+  brew install stow
+  ```
+
+- **JetBrainsMono Nerd Font** – set as `font-family` in [Ghostty config](.config/ghostty/config)
+
+  ```sh
+  brew install --cask font-jetbrains-mono-nerd-font
+  ```
 
 ## Development
 
