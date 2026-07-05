@@ -8,6 +8,7 @@ find them at their expected paths.
 
 > [!NOTE]
 > **Why `.config/` exists?**
+>
 > Tool-specific configs are intentionally grouped under `./.config/` instead of
 > being placed directly at the repository root.
 > This mirrors their destination under `~/.config/` and clearly separates
