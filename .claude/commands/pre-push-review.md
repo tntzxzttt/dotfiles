@@ -3,6 +3,8 @@ description: Review staged commits before pushing for secrets, license issues, a
 allowed-tools: Bash, Read, Grep
 ---
 
+<!-- markdownlint-disable MD013 MD041 -->
+
 ## Instructions
 
 Review all unpushed commits for issues that should not be made public.
