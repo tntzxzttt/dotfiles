@@ -162,3 +162,17 @@ In `./.config/fish/config.fish`:
 - `$GOPATH/bin` is added to `PATH`
 
 This keeps the home directory visually cleaner by avoiding a visible `~/go` directory.
+
+## Contributions
+
+Thank you for your interest in contributing!
+
+This repository is maintained as a personal development environment and engineering log.
+To preserve the integrity and continuity of its issue and pull request history,
+**I'm not currently accepting external issues or pull requests.**
+
+Please feel free to fork this repository and modify your own copy!
+
+## License
+
+[MIT](LICENSE)
