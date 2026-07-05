@@ -3,6 +3,8 @@ description: Suggest the next release version and title based on changes since t
 allowed-tools: Bash, Read
 ---
 
+<!-- markdownlint-disable MD041 -->
+
 ## Instructions
 
 Suggest the next release version and title for this repository.
@@ -14,20 +16,20 @@ Do NOT create the release — only propose.
 
 !`git describe --tags --abbrev=0 origin/main`
 
-2. List commits since the latest tag:
+1. List commits since the latest tag:
 
 !`git log $(git describe --tags --abbrev=0 origin/main)..origin/main --oneline`
 
-3. Review past releases for title style and naming conventions:
+1. Review past releases for title style and naming conventions:
 
 !`gh release list --limit 5`
 
-4. Determine the version bump following [Semantic Versioning](https://semver.org/):
+1. Determine the version bump following [Semantic Versioning](https://semver.org/):
    - **patch**: only fixes or chores (no new features)
    - **minor**: at least one `feat` commit
    - **major**: breaking changes
 
-5. Propose a title that summarizes the theme of the changes, matching the style of previous releases.
+2. Propose a title that summarizes the theme of the changes, matching the style of previous releases.
 
 ## Output format
 

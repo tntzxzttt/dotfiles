@@ -133,15 +133,15 @@ Instead, we use:
 
 ### fish
 
-See [`.config/fish/README.md`](.config/fish/README.md) for details on
+See [`./.config/fish/README.md`](./.config/fish/README.md) for details on
 `conf.d/` conventions and runtime dependencies (e.g. Bash 5.x for SDKMAN!).
 
 #### Machine-local functions
 
-| Directory | Tracked | Purpose |
-|---|---|---|
-| `functions/` | Yes | Version-controlled functions shared across machines |
-| `functions.local/` | No (git-ignored) | Machine-specific functions that stay local |
+| Directory          | Tracked          | Purpose                                             |
+| ------------------ | ---------------- | --------------------------------------------------- |
+| `functions/`       | Yes              | Version-controlled functions shared across machines |
+| `functions.local/` | No (git-ignored) | Machine-specific functions that stay local          |
 
 `functions.local/` is registered on `$fish_function_path` by
 `conf.d/00-autoload-local-functions.fish` and is prepended so that a local

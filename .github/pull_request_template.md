@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+
 <!--
 Single source of truth for PR body structure.
 CLAUDE.md references this file; do not duplicate the structure there.

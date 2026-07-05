@@ -3,6 +3,8 @@ description: Stash current changes, sync main, create a branch, and open a PR (n
 allowed-tools: Bash, Read, Grep, AskUserQuestion
 ---
 
+<!-- markdownlint-disable MD040 MD041 -->
+
 ## Instructions
 
 Commit the current working-tree changes and create a PR **without** a linked issue.
