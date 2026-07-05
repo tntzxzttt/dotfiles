@@ -22,6 +22,8 @@
 !.tmux
 !.tmux/**
 
+!.claude
+!.claude/**
 !.github
 !.github/**
 !.githooks
@@ -35,6 +37,7 @@
 # EXCEPTIONS
 # Ignore the following files and directories,
 # even if they are located within the directories listed in the whitelist above.
+.claude/settings.local.json 
 .config/tmux/plugins/
 .config/fish/conf.d/*.local.fish
 .config/fish/functions/__sdkman-noexport-init.sh
