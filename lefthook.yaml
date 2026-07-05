@@ -17,3 +17,5 @@ pre-push:
   commands:
     prevent-main-push:
       run: .githooks/protect-main-branch.sh push
+    pre-push-review:
+      run: .githooks/pre-push-review.sh
