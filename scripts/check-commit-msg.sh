@@ -33,6 +33,7 @@ valid_scopes=(
   fish
   ghostty
   git
+  helix
   nvim
   starship
   tmux
