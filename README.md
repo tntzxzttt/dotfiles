@@ -49,7 +49,7 @@ find them at their expected paths.
    directory (or file), move it out of `~/.config/` before running Stow:
 
    ```sh
-   bash -c 'for item in fish nvim git ghostty tmux starship.toml; do mv ~/.config/$item ~/.config/${item}.bak; done'
+   bash -c 'for item in fish nvim git ghostty helix tmux starship.toml; do mv ~/.config/$item ~/.config/${item}.bak; done'
    ```
 
 3. **Run Stow** from `~/dotfiles` to create the symlinks:

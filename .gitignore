@@ -16,6 +16,8 @@
 !.config/git/**
 !.config/ghostty/
 !.config/ghostty/**
+!.config/helix/
+!.config/helix/**
 !.config/tmux/
 !.config/tmux/**
 !.config/starship.toml
