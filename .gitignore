@@ -20,6 +20,8 @@
 !.config/helix/**
 !.config/tmux/
 !.config/tmux/**
+!.config/zed/
+!.config/zed/settings.json
 !.config/starship.toml
 !.tmux
 !.tmux/**
