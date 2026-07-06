@@ -126,7 +126,7 @@ Instead, we use:
 
 ### fish
 
-See [`.config/fish/README.md`](.config/fish/README.md) for details on
+See [`./.config/fish/README.md`](./.config/fish/README.md) for details on
 `conf.d/` conventions and runtime dependencies (e.g. Bash 5.x for SDKMAN!).
 
 #### Machine-local functions
@@ -149,7 +149,7 @@ function can override a tracked one of the same name.
 
 ### Go
 
-In [.config/fish/conf.d/01-path.fish](.config/fish/conf.d/01-path.fish):
+In [./.config/fish/conf.d/01-path.fish](./.config/fish/conf.d/01-path.fish):
 
 - `GOPATH` is set to `~/.go`
 - `$GOPATH/bin` is added to `PATH`
