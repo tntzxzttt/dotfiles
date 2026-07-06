@@ -149,7 +149,7 @@ function can override a tracked one of the same name.
 
 ### Go
 
-In `./.config/fish/config.fish`:
+In [./.config/fish/conf.d/01-path.fish](./.config/fish/conf.d/01-path.fish):
 
 - `GOPATH` is set to `~/.go`
 - `$GOPATH/bin` is added to `PATH`
