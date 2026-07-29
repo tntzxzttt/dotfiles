@@ -8,6 +8,7 @@ if status is-interactive
     alias dc='docker compose'
     alias g='git'
     alias grep='grep --color=auto'
+    alias h='herdr'
     alias k='kubectl'
     alias l='ls -CF'
     alias la='ls -A'
