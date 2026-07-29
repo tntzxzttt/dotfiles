@@ -427,6 +427,12 @@ bind -n M-v copy-mode
 # Ctrl+x to kill all other panes (with confirmation)
 bind -n C-x confirm-before -p "Kill all other panes? (y/n)" "kill-pane -a"
 
+# <prefix> + S to toggle synchronize-panes
+bind S setw synchronize-panes \; display 'synchronize-panes #{?pane_synchronized,on,off}'
+
+# <prefix> + = to even out all pane sizes (vim's C-w = style)
+bind = select-layout tiled \; display 'layout: tiled'
+
 # if you don't want Oh my tmux! to alter a binding or a setting, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
 
