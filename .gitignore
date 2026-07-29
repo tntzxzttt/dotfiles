@@ -18,6 +18,8 @@
 !.config/ghostty/**
 !.config/helix/
 !.config/helix/**
+!.config/herdr/
+!.config/herdr/config.toml
 !.config/tmux/
 !.config/tmux/**
 !.config/zed/
