@@ -1,0 +1,20 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+y"
+focus_pane_left = "alt+h"
+focus_pane_down = "alt+j"
+focus_pane_up = "alt+k"
+focus_pane_right = "alt+l"
+copy_mode = "alt+v"
+next_tab = "ctrl+shift+]"
+previous_tab = "ctrl+shift+["
+
+[ui]
+pane_gaps = true
+
+[ui.toast]
+delivery = "herdr"
+
+[experimental]
+pane_history = true

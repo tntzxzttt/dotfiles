@@ -31,6 +31,12 @@ find them at their expected paths.
   brew install --cask font-jetbrains-mono-nerd-font
   ```
 
+- **jq** – used by [the `ide` fish function](./.config/fish/functions/ide.fish) to build the herdr pane layout
+
+  ```sh
+  brew install jq
+  ```
+
 ## Set up
 
 ### Install
@@ -49,7 +55,7 @@ find them at their expected paths.
    directory (or file), move it out of `~/.config/` before running Stow:
 
    ```sh
-   bash -c 'for item in fish nvim git ghostty helix zed tmux starship.toml; do mv ~/.config/$item ~/.config/${item}.bak; done'
+   bash -c 'for item in fish nvim git ghostty helix herdr zed tmux starship.toml; do mv ~/.config/$item ~/.config/${item}.bak; done'
    ```
 
 3. **Run Stow** from `~/dotfiles` to create the symlinks:
@@ -97,6 +103,29 @@ stow --target="$HOME/.config" -D .config
    git add .config/<tool> .gitignore
    git commit -m "Add <tool> config"
    ```
+
+## Terminal multiplexers
+
+> [!WARNING]
+> In this dotfiles project, we deliberately avoid nesting tmux and herdr in one
+> another; the two are used as alternatives.
+
+herdr is itself a multiplexer, and it only tracks AI agents (e.g. `claude`) in
+the panes it owns: each agent reports to the herdr server through a per-pane
+hook that runs only when herdr's own environment is present. Mixing it with
+tmux therefore creates blind spots:
+
+- **tmux inside herdr** — herdr sees the whole tmux as a single pane, so it
+  cannot tell apart or drive the agents running in tmux's own panes.
+- **herdr inside tmux** — redundant, since herdr already provides the tabs,
+  panes, and workspaces tmux would add, all from a shared server that any
+  client just attaches to. Worse, an agent started in a bare tmux pane never
+  sets herdr's environment, so herdr never sees it; running every agent under
+  herdr keeps them all visible in one place.
+
+Additionally, staying unnested lets their prefix and keybindings be unified
+(prefix `ctrl+y`, `alt+hjkl` pane navigation, `alt+v` copy mode), so tmux and
+herdr feel identical to operate.
 
 ## Updating oh-my-tmux
 
