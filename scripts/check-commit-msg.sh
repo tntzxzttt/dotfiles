@@ -34,6 +34,7 @@ valid_scopes=(
   ghostty
   git
   helix
+  herdr
   nvim
   starship
   tmux
@@ -69,12 +70,15 @@ confirm_or_abort() {
     exit 1
   fi
 
-  printf "Continue anyway? [y/N] " > /dev/tty
-  IFS= read -r answer < /dev/tty
+  printf "Continue anyway? [y/N] " >/dev/tty
+  IFS= read -r answer </dev/tty
 
   case "$answer" in
-    [Yy]*) ;;
-    *) echo -e "${red}Aborted.${reset}"; exit 1 ;;
+  [Yy]*) ;;
+  *)
+    echo -e "${red}Aborted.${reset}"
+    exit 1
+    ;;
   esac
 }
 
@@ -86,8 +90,8 @@ warnings=()
 
 # Warn if the commit message has a type but no scope.
 check_scope_presence() {
-  if printf '%s\n' "$commit_msg" | grep -Eq '^[a-z]+!?:' \
-    && ! printf '%s\n' "$commit_msg" | grep -Eq '^[a-z]+\(.+\)!?:'; then
+  if printf '%s\n' "$commit_msg" | grep -Eq '^[a-z]+!?:' &&
+    ! printf '%s\n' "$commit_msg" | grep -Eq '^[a-z]+\(.+\)!?:'; then
     warnings+=("No scope")
   fi
 }
