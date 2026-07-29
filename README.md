@@ -31,6 +31,12 @@ find them at their expected paths.
   brew install --cask font-jetbrains-mono-nerd-font
   ```
 
+- **jq** – used by [the `ide` fish function](./.config/fish/functions/ide.fish) to build the herdr pane layout
+
+  ```sh
+  brew install jq
+  ```
+
 ## Set up
 
 ### Install

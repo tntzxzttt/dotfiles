@@ -1,4 +1,4 @@
-function ide -d "Open a tmux IDE layout with neovim, claude, and two terminals"
+function ide -d "Open a tmux/herdr IDE layout with neovim, claude, and two terminals"
     set -l original_dir (pwd)
     set -l nvim_args
 
@@ -31,6 +31,28 @@ function ide -d "Open a tmux IDE layout with neovim, claude, and two terminals"
 
             # Split and top-right pane for claude
             tmux split-window -h -l 20% -d "clear && claude"
+        end
+
+    # If inside herdr with a single pane, create the same layout via its CLI.
+    # Note: herdr's --ratio is the share kept by the existing pane,
+    # so tmux's -l 25% / 50% / 20% map to --ratio 0.75 / 0.5 / 0.8.
+    # --no-focus keeps focus on the original pane, where nvim launches.
+    else if set -q HERDR_PANE_ID
+        set -l panes (herdr pane layout --current | jq '.result.layout.panes | length')
+        if test $panes -eq 1
+            # Split and create bottom pane
+            set -l bottom (herdr pane split --current --direction down --ratio 0.75 \
+                --cwd (pwd) --no-focus | jq -r '.result.pane.pane_id')
+
+            # Split and create bottom-right pane
+            herdr pane split --pane $bottom --direction right --ratio 0.5 \
+                --cwd (pwd) --no-focus >/dev/null
+
+            # Split and top-right pane for claude
+            # (split cannot spawn a command, so run claude in the new pane's shell)
+            set -l claude_pane (herdr pane split --current --direction right --ratio 0.8 \
+                --cwd (pwd) --no-focus | jq -r '.result.pane.pane_id')
+            herdr pane run $claude_pane 'clear && claude' >/dev/null
         end
     end
 
