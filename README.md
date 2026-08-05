@@ -1,4 +1,16 @@
-# dotfiles
+<!-- markdownlint-disable-file MD041 -->
+
+<div align="center">
+  <h1>dotfiles</h1>
+  <img
+    src="./docs/images/screenshot.png"
+    alt="herdr running Neovim over a Flutter project, with its agents sidebar and a Claude Code panel"
+    width="600"
+  />
+  <p>Personal customization of a macOS terminal environment (herdr, Starship, tmux, Ghostty, etc.), managed with GNU Stow.</p>
+</div>
+
+## About
 
 This repository stores configuration files for various tools and applications.
 The configs live under `~/dotfiles/.config/` and are symlinked into `~/.config/`

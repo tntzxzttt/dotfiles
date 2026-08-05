@@ -37,6 +37,8 @@
 !.githooks/**
 !.editorconfig
 !.markdownlint-cli2.yaml
+!docs
+!docs/**
 !scripts
 !scripts/**
 !lefthook.yaml
