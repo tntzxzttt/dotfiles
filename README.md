@@ -18,7 +18,7 @@ using [GNU Stow](https://www.gnu.org/software/stow/), so the actual files are
 version-controlled here while the tools find them at their expected paths.
 
 Each managed directory under `.config/` is symlinked into `~/.config/` as a
-whole, so files you add under it later are picked up without re-running Stow.
+whole, so files you add under it later are picked up without re-running GNU Stow.
 
 > [!TIP]
 > The trade-off of folding whole directories is that tools write their runtime
@@ -33,20 +33,20 @@ Developing or forking this repo? See [CONTRIBUTING.md](CONTRIBUTING.md).
 ## Requirements
 
 - **macOS**
-- **git** – to clone the repository (with submodule support)
-- **GNU Stow** – to create the symlinks
+- **git** — to clone the repository (with submodule support)
+- **GNU Stow** — to create the symlinks
 
   ```sh
   brew install stow
   ```
 
-- **JetBrainsMono Nerd Font** – set as `font-family` in [Ghostty config](.config/ghostty/config)
+- **JetBrainsMono Nerd Font** — set as `font-family` in [Ghostty config](.config/ghostty/config)
 
   ```sh
   brew install --cask font-jetbrains-mono-nerd-font
   ```
 
-- **jq** – used by [the `ide` fish function](./.config/fish/functions/ide.fish) to build the herdr pane layout
+- **jq** — used by [the `ide` fish function](./.config/fish/functions/ide.fish) to build the herdr pane layout
 
   ```sh
   brew install jq
@@ -82,7 +82,7 @@ Developing or forking this repo? See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Uninstall
 
-Remove the symlinks created by Stow:
+Remove the symlinks created by GNU Stow:
 
 ```sh
 cd ~/dotfiles

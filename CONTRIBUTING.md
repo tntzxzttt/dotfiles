@@ -28,10 +28,24 @@ Please feel free to fork this repository and modify your own copy!
 Configs are symlinked into `~/.config/` with GNU Stow (see
 [`install.sh`](install.sh)), which folds each managed directory into a single
 symlink. Files added under an already-stowed directory are therefore picked up
-automatically; only a brand-new top-level item needs another stow run to be
+automatically; only a brand-new top-level item needs another `stow` run to be
 linked. The trade-off is that tools write their runtime files (plugins, logs,
 sockets, session state) back into this repo's working tree, so those paths are
 git-ignored.
+
+## Commit messages
+
+This repository uses [Lefthook](https://lefthook.dev/)
+to run pre-commit hooks that check commit messages for compliance with
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+So you need to install Lefthook and set up the hooks before committing:
+
+```sh
+brew install lefthook
+cd ~/dotfiles
+lefthook install
+```
 
 ## Adding a new config
 
@@ -88,17 +102,3 @@ Instead, we use:
 
 - [fisher](https://github.com/jorgebucaran/fisher) for package management
 - [Starship](https://starship.rs) for prompt customization
-
-## Commit messages
-
-This repository uses [Lefthook](https://lefthook.dev/)
-to run pre-commit hooks that check commit messages for compliance with
-[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
-
-So you need to install Lefthook and set up the hooks before committing:
-
-```sh
-brew install lefthook
-cd ~/dotfiles
-lefthook install
-```
