@@ -34,23 +34,14 @@ Developing or forking this repo? See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 - **macOS**
 - **git** — to clone the repository (with submodule support)
-- **GNU Stow** — to create the symlinks
+- **[Homebrew](https://brew.sh)** — to install everything else
 
-  ```sh
-  brew install stow
-  ```
-
-- **JetBrainsMono Nerd Font** — set as `font-family` in [Ghostty config](.config/ghostty/config)
-
-  ```sh
-  brew install --cask font-jetbrains-mono-nerd-font
-  ```
-
-- **jq** — used by [the `ide` fish function](./.config/fish/functions/ide.fish) to build the herdr pane layout
-
-  ```sh
-  brew install jq
-  ```
+Everything the configs need — GNU Stow (for the symlinks), the managed tools
+(fish, tmux, herdr, Neovim, Helix, Starship), the JetBrainsMono Nerd Font (set
+as `font-family` in the [Ghostty config](.config/ghostty/config)), and `jq`
+(used by [the `ide` fish function](./.config/fish/functions/ide.fish) to build
+the herdr pane layout) — is listed in the [`Brewfile`](Brewfile) and installed
+in the [Install](#install) step below.
 
 ## Install
 
@@ -64,10 +55,21 @@ Developing or forking this repo? See [CONTRIBUTING.md](CONTRIBUTING.md).
    ([oh-my-tmux](https://github.com/gpakosz/.tmux) and the `nvim`/`tmux`
    configs) that the installer needs.
 
-2. **Run the installer**:
+2. **Install the tools and dependencies**:
 
    ```sh
    cd ~/dotfiles
+   brew bundle --no-upgrade
+   ```
+
+   This installs everything listed in the [`Brewfile`](Brewfile): GNU Stow, the
+   managed tools, the Nerd Font, and `jq`. `--no-upgrade` installs what is
+   missing without upgrading tools you already have (`brew bundle` upgrades
+   outdated dependencies by default).
+
+3. **Run the installer**:
+
+   ```sh
    ./install.sh
    ```
 

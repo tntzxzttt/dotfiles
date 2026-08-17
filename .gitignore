@@ -44,6 +44,7 @@
 !lefthook.yaml
 !CLAUDE.md
 !LICENSE
+!Brewfile
 !install.sh
 
 # EXCEPTIONS
