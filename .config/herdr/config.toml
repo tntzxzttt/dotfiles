@@ -9,6 +9,8 @@ focus_pane_right = "alt+l"
 copy_mode = "alt+v"
 next_tab = "ctrl+shift+]"
 previous_tab = "ctrl+shift+["
+split_vertical = "prefix+|"
+split_horizontal = "prefix+minus"
 
 [ui]
 pane_gaps = true
