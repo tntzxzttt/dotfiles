@@ -435,6 +435,9 @@ bind S setw synchronize-panes \; display 'synchronize-panes #{?pane_synchronized
 # <prefix> + = to even out all pane sizes (vim's C-w = style)
 bind = select-layout tiled \; display 'layout: tiled'
 
+# <prefix> + | to split side by side (aligned with herdr; <prefix> + - already splits)
+bind | split-window -h -c '#{pane_current_path}' #!important
+
 # if you don't want Oh my tmux! to alter a binding or a setting, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
 
