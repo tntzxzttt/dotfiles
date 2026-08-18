@@ -5,9 +5,10 @@
   <img
     src="./docs/images/screenshot.png"
     alt="herdr running Neovim over a Flutter project, with its agents sidebar and a Claude Code panel"
-    width="600"
+    width="800"
   />
-  <p>Personal customization of a macOS terminal environment (herdr, Starship, tmux, Ghostty, etc.), managed with GNU Stow.</p>
+  <p>Personal customization of a macOS terminal environment (herdr, Starship, tmux, Ghostty, etc.),</p>
+  <p>managed with GNU Stow.</p>
 </div>
 
 ## About
