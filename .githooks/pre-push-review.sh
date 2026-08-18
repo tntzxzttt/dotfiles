@@ -19,7 +19,12 @@ output=$(claude -p /pre-push-review --allowedTools 'Read,Grep' 2>&1)
 
 echo "$output"
 
-if echo "$output" | grep -qi "Safe to push"; then
+# The review must end with exactly one machine-readable verdict line.
+# Fail closed on anything that is not a single, well-formed `VERDICT: SAFE`.
+verdict_lines=$(printf '%s\n' "$output" | grep -c '^VERDICT: ')
+last_line=$(printf '%s\n' "$output" | grep -v '^[[:space:]]*$' | tail -n 1)
+
+if [ "$verdict_lines" -eq 1 ] && [ "$last_line" = "VERDICT: SAFE" ]; then
   echo ""
   echo -e "${GREEN}Pre-push review passed.${RESET}"
   exit 0
