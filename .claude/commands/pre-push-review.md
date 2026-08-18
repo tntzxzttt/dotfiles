@@ -58,4 +58,21 @@ For each category, report one of:
 - **WARNING** — potential issue (describe what and where)
 - **BLOCK** — must fix before pushing (describe what and where)
 
-End with a summary: **Safe to push** or **Do not push** with reasons.
+Then write a short human-readable summary explaining the decision and reasons.
+
+## Verdict
+
+After the summary, the **final line** of your output must be exactly one
+machine-readable verdict, with no surrounding text, quotes, or formatting:
+
+- `VERDICT: SAFE` — no BLOCK-level issues; the push is safe.
+- `VERDICT: BLOCK` — one or more issues must be fixed before pushing.
+
+Rules:
+
+- Emit the verdict line exactly once, as the very last line of your output.
+- Use these two strings verbatim; do not reword, prefix, or annotate them.
+- When in doubt, emit `VERDICT: BLOCK`.
+
+The pre-push hook fails closed: any missing, malformed, duplicated, or
+non-`SAFE` verdict blocks the push.
