@@ -6,9 +6,9 @@
 - Each directory under `.config/` corresponds to an application and is treated as a valid scope
 - Always run `ls .config/` to confirm the current list of scopes before starting work
 - When deriving a scope from a filename (e.g. `starship.toml`), use the base name without extension (e.g. `starship`)
-- `.config/nvim` and `.config/tmux` are git submodules — do not edit them directly in this repository
-- `.config/tmux/tmux.conf` is a symlink to `.tmux/.tmux.conf`, which is thus a git submodule
-- `.config/tmux/tmux.conf` should never be edited directly; edit `.tmux/.tmux.conf` instead
+- `.config/nvim` and `.tmux` are git submodules — do not edit them directly in this repository
+- `.config/tmux/tmux.conf` is a symlink into the `.tmux` submodule (`.tmux/.tmux.conf`); never edit it, as doing so can break oh-my-tmux
+- To change tmux settings, edit only `.config/tmux/tmux.conf.local` (a regular file tracked in this repo, loaded by oh-my-tmux as the user override)
 
 ## GitHub Workflow
 
