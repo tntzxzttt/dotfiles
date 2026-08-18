@@ -1,45 +1,49 @@
-# dotfiles
+<!-- markdownlint-disable-file MD041 -->
+
+<div align="center">
+  <h1>dotfiles</h1>
+  <img
+    src="./docs/images/screenshot.png"
+    alt="herdr running Neovim over a Flutter project, with its agents sidebar and a Claude Code panel"
+    width="600"
+  />
+  <p>Personal customization of a macOS terminal environment (herdr, Starship, tmux, Ghostty, etc.), managed with GNU Stow.</p>
+</div>
+
+## About
 
 This repository stores configuration files for various tools and applications.
 The configs live under `~/dotfiles/.config/` and are symlinked into `~/.config/`
-using [GNU Stow](https://www.gnu.org/software/stow/),
-so the actual files are version-controlled here while the tools
-find them at their expected paths.
+using [GNU Stow](https://www.gnu.org/software/stow/), so the actual files are
+version-controlled here while the tools find them at their expected paths.
 
-> [!NOTE]
-> **Why `.config/` exists?**
->
-> Tool-specific configs are intentionally grouped under `./.config/` instead of
-> being placed directly at the repository root.
-> This mirrors their destination under `~/.config/` and clearly separates
-> managed application configs from repository-level files such as scripts,
-> GitHub metadata, and development tooling.
+Each managed directory under `.config/` is symlinked into `~/.config/` as a
+whole, so files you add under it later are picked up without re-running GNU Stow.
+
+> [!TIP]
+> The trade-off of folding whole directories is that tools write their runtime
+> files (plugins, logs, sockets, session state) back into this repo's working
+> tree (they are git-ignored). Disabling folding with `--no-folding` would keep
+> those out of the repo, but then every file added under a managed directory
+> would need another `stow` run to be linked — so folding is kept on for
+> convenience.
+
+Developing or forking this repo? See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Requirements
 
 - **macOS**
-- **git** – to clone the repository (with submodule support)
-- **GNU Stow** – to create the symlinks
+- **git** — to clone the repository (with submodule support)
+- **[Homebrew](https://brew.sh)** — to install everything else
 
-  ```sh
-  brew install stow
-  ```
+Everything the configs need — GNU Stow (for the symlinks), the managed tools
+(fish, tmux, herdr, Neovim, Helix, Starship), the JetBrainsMono Nerd Font (set
+as `font-family` in the [Ghostty config](.config/ghostty/config)), and `jq`
+(used by [the `ide` fish function](./.config/fish/functions/ide.fish) to build
+the herdr pane layout) — is listed in the [`Brewfile`](Brewfile) and installed
+in the [Install](#install) step below.
 
-- **JetBrainsMono Nerd Font** – set as `font-family` in [Ghostty config](.config/ghostty/config)
-
-  ```sh
-  brew install --cask font-jetbrains-mono-nerd-font
-  ```
-
-- **jq** – used by [the `ide` fish function](./.config/fish/functions/ide.fish) to build the herdr pane layout
-
-  ```sh
-  brew install jq
-  ```
-
-## Set up
-
-### Install
+## Install
 
 1. **Clone the repository** to `~/dotfiles`:
 
@@ -47,62 +51,48 @@ find them at their expected paths.
    git clone --recurse-submodules https://github.com/tntzxzttt/dotfiles.git ~/dotfiles
    ```
 
-   The `--recurse-submodules` flag is required to pull in
-   [oh-my-tmux](https://github.com/gpakosz/.tmux), which is included as a git
-   submodule under `.tmux/`.
+   The `--recurse-submodules` flag pulls in the submodules — the Neovim config
+   and [oh-my-tmux](https://github.com/gpakosz/.tmux) (which the tmux config
+   symlinks into) — that the installer needs.
 
-2. **Back up any existing configs** you want to preserve. For each managed
-   directory (or file), move it out of `~/.config/` before running Stow:
-
-   ```sh
-   bash -c 'for item in fish nvim git ghostty helix herdr zed tmux starship.toml; do mv ~/.config/$item ~/.config/${item}.bak; done'
-   ```
-
-3. **Run Stow** from `~/dotfiles` to create the symlinks:
+2. **Install the tools and dependencies**:
 
    ```sh
    cd ~/dotfiles
-   /opt/homebrew/bin/stow --target="$HOME/.config" .config
+   brew bundle --no-upgrade
    ```
 
-   This symlinks `~/dotfiles/.config/` → `~/.config/`, making every managed
-   config available at its expected location.
+   This installs everything listed in the [`Brewfile`](Brewfile): GNU Stow, the
+   managed tools, the Nerd Font, and `jq`. `--no-upgrade` installs what is
+   missing without upgrading tools you already have (`brew bundle` upgrades
+   outdated dependencies by default).
 
-### Uninstall
+3. **Run the installer**:
 
-Remove the symlinks created by Stow:
+   ```sh
+   ./install.sh
+   ```
+
+   It checks out submodules, then symlinks this repo's files into `~/.config/`.
+   Any existing config that would be overwritten is first moved aside to
+   `~/.config/<tool>.<timestamp>.bak`, so nothing you already have is lost.
+
+> [!NOTE]
+> Adopting these dotfiles means starting from this repo's setup rather than
+> merging your own — an existing herdr or tmux user does not carry over their
+> previous environment; it is kept in the `*.bak` directory for reference only.
+
+## Uninstall
+
+Remove the symlinks created by GNU Stow:
 
 ```sh
 cd ~/dotfiles
 stow --target="$HOME/.config" -D .config
 ```
 
-## Adding a New Config
-
-1. Create the new config directory (or file) under `~/dotfiles/.config/`:
-
-   ```sh
-   mkdir -p ~/dotfiles/.config/<tool>
-
-   # add a placeholder so the directory is committed
-   touch ~/dotfiles/.config/<tool>/.gitkeep
-   ```
-
-2. Update `.gitignore` to whitelist the new directory:
-
-   ```gitignore
-   !.config/<tool>/
-   !.config/<tool>/**
-   ```
-
-3. Re-run `stow --target="$HOME" .` from `~/dotfiles` to pick up the new entry.
-
-4. Commit the changes:
-
-   ```sh
-   git add .config/<tool> .gitignore
-   git commit -m "Add <tool> config"
-   ```
+Restore anything you need from the `*.bak` directories the installer left
+behind.
 
 ## Terminal multiplexers
 
@@ -127,30 +117,6 @@ Additionally, staying unnested lets their prefix and keybindings be unified
 (prefix `ctrl+y`, `alt+hjkl` pane navigation, `alt+v` copy mode), so tmux and
 herdr feel identical to operate.
 
-## Updating oh-my-tmux
-
-The `.tmux/` submodule tracks [gpakosz/.tmux](https://github.com/gpakosz/.tmux).
-To update it:
-
-```sh
-cd ~/dotfiles
-git submodule update --remote .tmux
-```
-
-Review the [changelog](https://github.com/gpakosz/.tmux/commits/master) before
-updating — new versions may introduce breaking changes to `.tmux.conf.local`.
-
-## Alternatives to Oh My Fish
-
-Although Oh My Fish supports both package management and prompt customization,
-it has not been actively maintained as of May 2026.
-(The master branch was last updated 11 years ago...)
-
-Instead, we use:
-
-- [fisher](https://github.com/jorgebucaran/fisher) for package management
-- [Starship](https://starship.rs) for prompt customization
-
 ## Customization
 
 ### fish
@@ -158,7 +124,7 @@ Instead, we use:
 See [`./.config/fish/README.md`](./.config/fish/README.md) for details on
 `conf.d/` conventions and runtime dependencies (e.g. Bash 5.x for SDKMAN!).
 
-#### Machine-local functions
+### Machine-local functions
 
 | Directory          | Tracked          | Purpose                                             |
 | ------------------ | ---------------- | --------------------------------------------------- |
@@ -178,38 +144,19 @@ function can override a tracked one of the same name.
 
 ### Go
 
-In [./.config/fish/conf.d/01-path.fish](./.config/fish/conf.d/01-path.fish):
+In [`./.config/fish/conf.d/01-path.fish`](./.config/fish/conf.d/01-path.fish):
 
 - `GOPATH` is set to `~/.go`
 - `$GOPATH/bin` is added to `PATH`
 
 This keeps the home directory visually cleaner by avoiding a visible `~/go` directory.
 
-## Development
+## Contributing
 
-### Commit Message Format
-
-This repository uses [Lefthook](https://lefthook.dev/)
-to run pre-commit hooks that check commit messages for compliance with
-[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
-
-So you need to install Lefthook and set up the hooks before committing:
-
-```sh
-brew install lefthook
-cd ~/dotfiles
-lefthook install
-```
-
-## Contributions
-
-Thank you for your interest in contributing!
-
-This repository is maintained as a personal development environment and engineering log.
-To preserve the integrity and continuity of its issue and pull request history,
-**I'm not currently accepting external issues or pull requests.**
-
-Please feel free to fork this repository and modify your own copy!
+This repository is maintained as a personal development environment and
+engineering log, so external issues and pull requests aren't accepted — feel
+free to fork it. See [CONTRIBUTING.md](CONTRIBUTING.md) for how the repo is
+structured and maintained.
 
 ## License
 

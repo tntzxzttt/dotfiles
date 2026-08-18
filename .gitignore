@@ -4,6 +4,7 @@
 # Track this file and README
 !.gitignore
 !README.md
+!CONTRIBUTING.md
 
 # WHITELIST
 # Manage config directories and their contents below.
@@ -36,16 +37,20 @@
 !.githooks/**
 !.editorconfig
 !.markdownlint-cli2.yaml
+!docs
+!docs/**
 !scripts
 !scripts/**
 !lefthook.yaml
 !CLAUDE.md
 !LICENSE
+!Brewfile
+!install.sh
 
 # EXCEPTIONS
 # Ignore the following files and directories,
 # even if they are located within the directories listed in the whitelist above.
-.claude/settings.local.json 
+.claude/settings.local.json
 .config/tmux/plugins/
 .config/fish/conf.d/*.local.fish
 .config/fish/functions/__sdkman-noexport-init.sh
