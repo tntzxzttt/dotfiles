@@ -55,6 +55,8 @@ is_ours() {
 # directory symlink, e.g. ~/.config/nvim -> ~/.config/nvim.<timestamp>.bak.
 backup_existing() {
   local path name target dest
+  # Match hidden entries too, so the backup mirrors what stow will link.
+  shopt -s dotglob nullglob
   for path in "$PKG_PHYS"/*; do
     name="$(basename "$path")"
     target="$TARGET/$name"
@@ -70,8 +72,9 @@ backup_existing() {
 main() {
   ensure_stow
 
-  # Submodules (oh-my-tmux, nvim, tmux) must be checked out, otherwise stow
-  # would link an empty tree.
+  # The submodules — the Neovim config (.config/nvim) and oh-my-tmux (.tmux,
+  # which .config/tmux/tmux.conf points into) — must be checked out, otherwise
+  # stow would link an empty tree.
   git -C "$REPO" submodule update --init --recursive
 
   mkdir -p "$TARGET"

@@ -51,9 +51,9 @@ in the [Install](#install) step below.
    git clone --recurse-submodules https://github.com/tntzxzttt/dotfiles.git ~/dotfiles
    ```
 
-   The `--recurse-submodules` flag pulls in the submodules
-   ([oh-my-tmux](https://github.com/gpakosz/.tmux) and the `nvim`/`tmux`
-   configs) that the installer needs.
+   The `--recurse-submodules` flag pulls in the submodules — the Neovim config
+   and [oh-my-tmux](https://github.com/gpakosz/.tmux) (which the tmux config
+   symlinks into) — that the installer needs.
 
 2. **Install the tools and dependencies**:
 

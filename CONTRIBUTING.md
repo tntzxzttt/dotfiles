@@ -72,11 +72,12 @@ lefthook install
    stow --restow --target="$HOME/.config" .config
    ```
 
-4. Commit the changes:
+4. Commit the changes. The commit-msg hook expects a scope and an issue number,
+   so pass `-n` when there is no issue:
 
    ```sh
    git add .config/<tool> .gitignore
-   git commit -m "feat(<tool>): add config"
+   git commit -n -m "feat(<tool>): add config"
    ```
 
 ## Updating oh-my-tmux
