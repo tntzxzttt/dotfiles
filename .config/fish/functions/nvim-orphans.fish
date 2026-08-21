@@ -56,12 +56,15 @@ function nvim-orphans --description "Detect orphaned nvim --embed servers whose 
 
         # One swap file per unsaved buffer: what you lose by killing. A wedged
         # server already flushed them, so recovery survives SIGKILL.
-        set -l swaps (lsof -a -p $pid -Fn 2>/dev/null | string match -rg '^n(.*/swap/.*)')
+        # Anchor on the swap basename (always %-encoded) so a real file that
+        # merely lives under some .../swap/ path cannot false-match.
+        set -l swaps (lsof -a -p $pid -Fn 2>/dev/null | string match -rg '^n(.*/swap/%[^/]*)$')
         if test (count $swaps) -gt 0
             echo "    open files :"
             for s in $swaps
-                # %Users%foo%bar.txt.swp -> /Users/foo/bar.txt
-                echo "      - "(basename $s | string replace -r '\.sw[a-p]$' '' | string replace -a % /)
+                # %Users%foo%bar.txt.swp -> /Users/foo/bar.txt. nvim encodes a
+                # literal % as %%, so decode %% first (via a sentinel) then % -> /.
+                echo "      - "(basename $s | string replace -r '\.sw[a-p]$' '' | string replace -a %% \x1e | string replace -a % / | string replace -a \x1e %)
             end
             echo "      ^ swap is already preserved; recover with: nvim -r <file>"
         else
