@@ -54,3 +54,4 @@
 .config/tmux/plugins/
 .config/fish/conf.d/*.local.fish
 .config/fish/functions/__sdkman-noexport-init.sh
+.config/fish/completions/copilot.fish
